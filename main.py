@@ -42,3 +42,7 @@ cars = [
 @app.get("/api")
 def takeUser():
     return cars
+@app.post("/api/add")
+def addcar(carsADD:Addcars):
+    cars.append(carsADD.dict())
+    return f"{cars} qo'shildi"

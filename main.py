@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 app = FastAPI()
 class Addcars(BaseModel):
+    id:int
     nomi:str
     modeli:int
     narxi:int | float
@@ -46,3 +47,13 @@ def takeUser():
 def addcar(carsADD:Addcars):
     cars.append(carsADD.dict())
     return f"{cars} qo'shildi"
+@app.get("/api-imn/{cars}")
+def updata(cars:int,updataUser:Addcars):
+    for u in cars:
+        if u ["id"] == cars:
+           u ["id"] = updataUser.id  
+           u ["nomi"] = updataUser.nomi
+           u ["modeli"] = updataUser.modeli 
+           u ["narxi"] = updataUser.narxi
+           u ["rasmi"] = updataUser.rasmi
+    return F"{cars.cars} yangilandil"
